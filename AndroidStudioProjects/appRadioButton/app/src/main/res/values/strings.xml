@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">appRadioButton</string>
+    <string name="ButtonGroup">appRadioButton</string>
+    <string name="RadioButton1">Android</string>
+    <string name="RadioButton2">Java</string>
+    <string name="textView1">Me gusta programar </string>
+    <string name="checkbox">Me gusta programar </string>
+    <string name="checkbox">Me gusta programar </string>
+</resources>

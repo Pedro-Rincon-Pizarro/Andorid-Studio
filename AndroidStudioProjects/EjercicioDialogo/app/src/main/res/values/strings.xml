@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">AplicacionDialogos</string>
+    <string name="dificultad">Dificultad</string>
+    <string name="instrucciones">Instrucciones</string>
+    <string name="iconos_de_bomba">Iconos de Bomba</string>
+    <string-array name="array">
+        <item>Dificultad Principiante</item>
+        <item>Dificultad Amateur</item>
+        <item>Dificultad Avanzada</item>
+    </string-array>
+    <string name="bomba1">Mina Clasica</string>
+    <string name="bomba2">Mina Bomber</string>
+    <string name="bomba3">Dinamita</string>
+    <string name="bomba4">Granada</string>
+    <string name="bomba5">Mina Submarina</string>
+    <string name="bomba6">Coctel Molotov</string>
+</resources>

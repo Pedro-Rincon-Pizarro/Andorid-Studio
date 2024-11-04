@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">DiversionConBanderas</string>
+    <string name="bt">Comenzar</string>
+    <string name="ibt1">Bandera 1</string>
+    <string name="ibt2">Bandera 2</string>
+    <string name="txt1">Elige la bandera de </string>
+    <string name="bt2">Terminar</string>
+    <string name="txt2">Puntos: </string>
+</resources>

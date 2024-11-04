@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/clientes"
+        android:title="@string/clientes"
+        app:showAsAction="never"
+    />
+
+    <item
+        android:id="@+id/facturas"
+        android:title="@string/facturas"
+        />
+
+    <item
+        android:id="@+id/almacen"
+        android:title="@string/almacen"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/buscar"
+        android:title="@string/buscar"
+        android:icon="@drawable/baseline_find_in_page_24"
+        app:showAsAction="ifRoom"
+        />
+</menu>

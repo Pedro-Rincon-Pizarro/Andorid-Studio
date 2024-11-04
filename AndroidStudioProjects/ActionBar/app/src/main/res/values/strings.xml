@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Menú</string>
+    <string name="clientes">Clientes</string>
+    <string name="facturas">Facturas</string>
+    <string name="buscar">Buscar</string>
+    <string name="almacen">Almacen</string>
+</resources>
