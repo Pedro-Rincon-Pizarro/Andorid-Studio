@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Recycler View</string>
+    <string name="carne">carne</string>
+    <string name="crema">crema</string>
+    <string name="croquetas">croquetas</string>
+    <string name="ensalada">ensalada</string>
+    <string name="hamburguesa">hamburguesa</string>
+    <string name="menestra">menestra</string>
+    <string name="paella">paella</string>
+    <string name="pollo">pollo</string>
+    <string name="sopas">sopas</string>
+    <string name="verduras">verduras</string>
+</resources>

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Poliglota</string>
+    <string name="dialogo">Dialogo</string>
+    <string-array name="idiomas">
+        <item>Francés</item>
+        <item>Alemán</item>
+        <item>Inglés</item>
+        <item>Español</item>
+    </string-array>
+</resources>

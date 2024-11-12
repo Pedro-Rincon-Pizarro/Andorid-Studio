@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">1Listas_PedroRincon</string>
+    <string name="caballo">caballo</string>
+    <string name="gato">gato</string>
+    <string name="leon">leon</string>
+    <string name="mono">mono</string>
+    <string name="oso">oso</string>
+    <string name="vaca">vaca</string>
+    <string name="zorro">zorro</string>
+</resources>

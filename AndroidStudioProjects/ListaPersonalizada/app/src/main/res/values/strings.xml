@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">ListaPersonalizada</string>
+    <string name="Burgos">Burgos</string>
+    <string name="Segovia">Segovia</string>
+    <string name="Salamanca">Salamanca</string>
+    <string name="Avila">Avila</string>
+    <string name="Valladolid">Valladolid</string>
+    <string name="descBurgos">Catedral de Burgos</string>
+    <string name="descSegovia">Acueducto de Segovia</string>
+    <string name="descSalamanca">Casa de las Conchas</string>
+    <string name="descAvila">Murallas de Avila</string>
+    <string name="descValladolid">Iglesia de san Pablo</string>
+
+</resources>

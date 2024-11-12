@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Walter2</string>
+    <string name="swOn">Quitar Sombrero</string>
+    <string name="swOff">Poner Sombrero</string>
+    <string name="todo">TODO</string>
+</resources>

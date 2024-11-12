@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Cines</string>
+    <string name="cinema">Cinema</string>
+    <string name="cinepolis">Cinepolis</string>
+</resources>
