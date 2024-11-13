@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">DAM_BuscaMinas</string>
+    <string name="bomba">bomba</string>
+    <string name="configurar_juego">Configurar juego</string>
+    <string name="comenzar_juego">Comenzar Juego</string>
+    <string name="instrucciones">Instrucciones</string>
+
+    <string-array name="dificultad">
+        <item>Principiante</item>
+        <item>Amateur</item>
+        <item>Avanzada</item>
+    </string-array>
+    <string name="bomba1">Mina Clasica</string>
+    <string name="bomba2">Mina Bomber</string>
+    <string name="bomba3">Dinamita</string>
+    <string name="bomba4">Granada</string>
+    <string name="bomba5">Mina Submarina</string>
+    <string name="bomba6">Coctel Molotov</string>
+
+</resources>
