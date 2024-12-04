@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Fragmentos3</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="inic">Inicio</string>
+    <string name="perf">Perfil</string>
+    <string name="notif">Notificaciones</string>
+</resources>

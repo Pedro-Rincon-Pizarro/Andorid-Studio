@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">IntentImplicito2</string>
+    <string name="enviar_email">Enviar email</string>
+    <string name="ir_mapa">ir mapa</string>
+    <string name="ir_pag">Ir pag</string>
+    <string name="email">Email:</string>
+    <string name="latitud">Latitud:</string>
+    <string name="longitud">Longitud:</string>
+    <string name="url">URL:</string>
+</resources>

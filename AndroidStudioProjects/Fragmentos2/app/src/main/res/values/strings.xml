@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Fragmentos2</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="inicio">Hola buenas tardes</string>
+    <string name="rojo">Rojo</string>
+    <string name="verde">Verde</string>
+    <string name="txtInicio">hello_blank_fragment</string>
+</resources>

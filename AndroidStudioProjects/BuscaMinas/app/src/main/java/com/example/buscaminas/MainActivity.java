@@ -1,31 +1,21 @@
 package com.example.buscaminas;
 
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridLayout;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
-
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity
@@ -34,16 +24,20 @@ public class MainActivity extends AppCompatActivity
     String dificultad = "";
     GridLayout grid;
     Button button;
-    int j = 0;
-    Integer[][] valoresBombas;
-    int pos;
+    int[][] valoresBombas;
+    Spinner spinner;
+    int icono;
+    MediaPlayer pum, pedo, win;
+    int marcadas = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         grid = findViewById(R.id.grid);
-
+        pum = MediaPlayer.create(this, R.raw.pum);
+        pedo = MediaPlayer.create(this, R.raw.pedo);
+        win = MediaPlayer.create(this, R.raw.win);
         arrayBombas.add(new Bomba(R.drawable.bomba, getResources().getString(R.string.bomba1)));
         arrayBombas.add(new Bomba(R.drawable.bomba1, getResources().getString(R.string.bomba2)));
         arrayBombas.add(new Bomba(R.drawable.coctel, getResources().getString(R.string.bomba3)));
@@ -77,27 +71,30 @@ public class MainActivity extends AppCompatActivity
         {
             if(dificultad.equals("") || dificultad.equals("Principiante"))
             {
+                grid.removeAllViewsInLayout();
                 grid.setRowCount(8);
                 grid.setColumnCount(8);
-                valoresBombas = new Integer[8][8];
-                //generarBombas(10);
-                ajustarGrid();
+
+                ajustarGrid(10);
+                generarBombas(10);
             }
             else if(dificultad.equals("Amateur"))
             {
+                grid.removeAllViewsInLayout();
                 grid.setRowCount(12);
                 grid.setColumnCount(12);
-                valoresBombas = new Integer[12][12];
-                //generarBombas(30);
-                ajustarGrid();
+
+                ajustarGrid(30);
+                generarBombas(30);
             }
             else if(dificultad.equals("Avanzada"))
             {
+                grid.removeAllViewsInLayout();
                 grid.setRowCount(16);
                 grid.setColumnCount(16);
-                valoresBombas = new Integer[16][16];
-                //generarBombas(60);
-                ajustarGrid();
+
+                ajustarGrid(60);
+                generarBombas(60);
             }
         }
         else if(item.getItemId() == R.id.configurar)
@@ -122,7 +119,7 @@ public class MainActivity extends AppCompatActivity
         {
 
 
-            Spinner spinner = new Spinner(this);
+            spinner = new Spinner(this);
 
             MiAdaptador adaptador = new MiAdaptador(this, R.layout.layout_item, arrayBombas);
             spinner.setAdapter(adaptador);
@@ -135,7 +132,7 @@ public class MainActivity extends AppCompatActivity
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     item.setIcon(arrayBombas.get(position).getImagen());
-
+                    icono = arrayBombas.get(position).getImagen();
                 }
 
                 @Override
@@ -158,8 +155,9 @@ public class MainActivity extends AppCompatActivity
     private void generarBombas(int numeroBombas)
     {
         Random rd = new Random();
-        int f;
-        int c;
+        int f = 0;
+        int c = 0;
+        valoresBombas = new int[grid.getRowCount()][grid.getColumnCount()];
         for (int i = 0; i < numeroBombas; i++)
         {
             do
@@ -167,14 +165,15 @@ public class MainActivity extends AppCompatActivity
                 f = rd.nextInt(grid.getRowCount());
                 c = rd.nextInt(grid.getColumnCount());
             }while(valoresBombas[f][c] == -1);
-
             valoresBombas[f][c] = -1;
         }
     }
 
-    public void ajustarGrid()
+    public void ajustarGrid(int numBomb)
     {
+        marcadas = 0;
         grid.removeAllViews();
+
         int numFilas = grid.getRowCount();
         int numColumnas = grid.getColumnCount();
 
@@ -183,32 +182,141 @@ public class MainActivity extends AppCompatActivity
             for(int columna = 0; columna < grid.getColumnCount(); columna++)
             {
                 button = new Button(this);
-
-                button.setId(ViewGroup.generateViewId());
+                button.setTextColor(Color.parseColor("black"));
+                button.setId(grid.getColumnCount() * fila + columna);
                 GridLayout.LayoutParams params = new GridLayout.LayoutParams();
                 params.rowSpec =  GridLayout.spec(fila);
                 params.columnSpec = GridLayout.spec(columna);
                 params.width = grid.getWidth() / numColumnas;
                 params.height = grid.getHeight() / numFilas;
-                int f = fila;
-                int c = columna;
+
 
                 grid.addView(button,params);
+                button.setOnLongClickListener(new View.OnLongClickListener()
+                {
+                    @Override
+                    public boolean onLongClick(View view) {
+                        int row = view.getId() % grid.getColumnCount();
+                        int colum = (view.getId() - row) / grid.getColumnCount();
 
-                button.setOnClickListener(new View.OnClickListener() {
+                        if (valoresBombas[row][colum] == -1) {
+                            view.setBackgroundColor(Color.parseColor("yellow"));
+                            view.setBackgroundResource(R.drawable.banderin);// Marca como sospechosa con color naranja.
+                            Toast.makeText(MainActivity.this, "Marcado como bomba", Toast.LENGTH_SHORT).show();
+                            marcadas++;
+                            if(marcadas == numBomb)
+                            {
+                                AlertDialog.Builder dlgInstrucciones = new AlertDialog.Builder(MainActivity.this);
+                                dlgInstrucciones.setTitle("Has Ganado");
+                                dlgInstrucciones.setMessage("Has marcado todas las bombas!!");
+                                dlgInstrucciones.setIcon(icono);
+                                win.start();
+                                dlgInstrucciones.setPositiveButton("Ok", (dialogInterface, i) -> {
+                                    dialogInterface.dismiss();
+                                    grid.removeAllViews();
+                                });
+                                dlgInstrucciones.create().show();
+                            }
+                        } else
+                        {
+                            AlertDialog.Builder dlgInstrucciones = new AlertDialog.Builder(MainActivity.this);
+                            dlgInstrucciones.setTitle("Has perdido");
+                            dlgInstrucciones.setMessage("No habia ninguna bomba");
+                            dlgInstrucciones.setIcon(icono);
+                            pedo.start();
+                            dlgInstrucciones.setPositiveButton("Ok", (dialogInterface, i) -> {
+                                dialogInterface.dismiss();
+                                grid.removeAllViews();
+                            });
+                            dlgInstrucciones.create().show();
+                        }
+                        return true; // Retorna true para indicar que se manejó el evento de clic largo.
+                    }
+                });
+
+                button.setOnClickListener(new View.OnClickListener()
+                {
                     @Override
                     public void onClick(View view)
                     {
-                        if(valoresBombas[f][c] == -1)
+                        int a = view.getId() % grid.getColumnCount();
+                        int b = (view.getId() - a) / grid.getColumnCount();
+                        if(valoresBombas[a][b] == -1)
                         {
-                            button.setBackgroundColor(Color.parseColor("red"));
+                            view.setBackgroundColor(Color.parseColor("red"));
+                            view.setBackgroundResource(icono);
+                            AlertDialog.Builder dlgInstrucciones = new AlertDialog.Builder(MainActivity.this);
+                            dlgInstrucciones.setTitle("Has perdido");
+                            dlgInstrucciones.setMessage("La bomba ha explotado!!!!");
+                            pum.start();
+                            dlgInstrucciones.setIcon(icono);
+                            dlgInstrucciones.setPositiveButton("Ok", (dialogInterface, i) -> {
+                                dialogInterface.dismiss();
+                                grid.removeAllViews();
+                            });
+                            dlgInstrucciones.create().show();
+
+
                         }
-                        else {
-                            button.setBackgroundColor(Color.parseColor("green"));
+                        else
+                        {
+                            int bombascircundantes = comprobarBotonesCircundantes(a, b);
+                            if(bombascircundantes == 0)
+                            {
+                                revelarBotonesCircundantes(a, b);
+                            }
+                            else
+                            {
+                                view.setBackgroundColor(Color.parseColor("green"));
+                                ((Button) view).setText(String.valueOf(bombascircundantes));
+                            }
                         }
                     }
                 });
             }
         }
+    }
+
+    public void revelarBotonesCircundantes(int a, int b) {
+        for (int i = Math.max(0, a - 1); i <= Math.min(valoresBombas.length - 1, a + 1); i++)
+        {
+            for (int j = Math.max(0, b - 1); j <= Math.min(valoresBombas[0].length - 1, b + 1); j++)
+            {
+                Button boton = (Button) grid.getChildAt(j * grid.getColumnCount() + i); // Obtener el botón en esa posición.
+
+                if (boton != null && boton.isEnabled()) { // Verifica que el botón no haya sido revelado ya.
+                    boton.setEnabled(false); // Desactiva el botón para evitar loops.
+                    int bombascircundantes = comprobarBotonesCircundantes(i, j);
+
+                    if (bombascircundantes == 0)
+                    {
+                        boton.setBackgroundColor(Color.parseColor("green"));
+                        revelarBotonesCircundantes(i, j); // Llamada recursiva.
+                    } else
+                    {
+                        boton.setBackgroundColor(Color.parseColor("green"));
+                        boton.setText(String.valueOf(bombascircundantes));
+                    }
+                }
+            }
+        }
+    }
+
+
+    public int comprobarBotonesCircundantes(int a, int b)
+    {
+        int bombasCerca = 0;
+        for (int i = Math.max(0, a - 1); i <= Math.min(valoresBombas.length - 1, a + 1); i++)
+        {
+            for (int j = Math.max(0, b - 1); j <= Math.min(valoresBombas[0].length - 1, b + 1); j++)
+            {
+                if (valoresBombas[i][j] == -1)
+                {
+                    bombasCerca++;
+                }
+            }
+        }
+        return bombasCerca;
+
     }
 }

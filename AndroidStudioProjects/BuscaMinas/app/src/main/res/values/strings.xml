@@ -10,11 +10,20 @@
         <item>Amateur</item>
         <item>Avanzada</item>
     </string-array>
+
+    <string-array name="arrayBombas">
+        <item>Mina Clasica</item>
+        <item>Mina Bomber</item>
+        <item>Dinamita</item>
+        <item>Granada</item>
+        <item>Mina Submarina</item>
+        <item>Coctel Molotov</item>
+    </string-array>
     <string name="bomba1">Mina Clasica</string>
     <string name="bomba2">Mina Bomber</string>
-    <string name="bomba3">Dinamita</string>
-    <string name="bomba4">Granada</string>
-    <string name="bomba5">Mina Submarina</string>
-    <string name="bomba6">Coctel Molotov</string>
+    <string name="bomba3">Coctel Molotov</string>
+    <string name="bomba4">Dinamita</string>
+    <string name="bomba5">Granada</string>
+    <string name="bomba6">Mina Submarina</string>
 
 </resources>

@@ -27,31 +27,32 @@ public class MiAdaptador extends ArrayAdapter<Bomba>
         objetos = objects;
     }
 
+
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        View view = cargar(position);
+        View view = cargarVista(position, parent);
 
         return view;
     }
-
-
 
     @Override
     public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        View view = cargar(position);
+        View view = cargarVista(position, parent);
+
         return view;
     }
 
-    @NonNull
-    private View cargar(int position) {
-        View view = LayoutInflater.from(contexto).inflate(R.layout.layout_item,null,false);
+    private @NonNull View cargarVista(int position, @NonNull ViewGroup parent) {
+        View view = LayoutInflater.from(contexto).inflate(R.layout.layout_item, parent, false);
+        TextView txtNombre = (TextView) view.findViewById(R.id.textoBomba);
+
+        ImageView img = (ImageView) view.findViewById(R.id.imagenBomba);
         Bomba bomba = objetos.get(position);
-
-        ImageView imagen = view.findViewById(R.id.imagenBomba);
-        TextView texto = view.findViewById(R.id.textoBomba);
-        imagen.setImageResource(bomba.getImagen());
-        texto.setText(bomba.getNombre());
+        txtNombre.setText(bomba.getNombre());
+        img.setImageResource(bomba.getImagen());
         return view;
     }
+
+
 }
