@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ShareMyBike</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">Select Date</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="selec">Select the date to list available bikes</string>
+    <string name="item_fragment">Item Fragment</string>
+</resources>
