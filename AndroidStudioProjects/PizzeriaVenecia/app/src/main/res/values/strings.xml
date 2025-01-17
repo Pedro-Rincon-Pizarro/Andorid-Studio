@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">Pizzeria Venecia</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">C/ Burgo de Osma 4-6</string>
+    <string name="nav_header_subtitle">Aranda de Duero</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Inicio</string>
+    <string name="menu_carta">Carta</string>
+    <string name="menu_taglio">Reserva Taglios</string>
+    <string name="menu_contacto">Contacta con nosotros</string>
+    <string name="por_mitades">Por mitades</string>
+
+    <string-array name="spinner_pizzas">
+        <item>Elige un tipo</item>
+        <item>Rabo de Toro</item>
+        <item>Antojo de Otoño</item>
+        <item>Costilla</item>
+        <item>De la Huerta</item>
+        <item>Cecina</item>
+        <item>Iberica</item>
+        <item>Popeye</item>
+        <item>Mexicana</item>
+        <item>7 Quesos</item>
+        <item>La de Javi</item>
+    </string-array>
+
+    <string-array name="spinner_horas">
+        <item>Elige una hora</item>
+        <item>19:30h</item>
+        <item>19:45h</item>
+        <item>20:00h</item>
+        <item>20:15h</item>
+        <item>20:30h</item>
+        <item>20:45h</item>
+        <item>21:00h</item>
+        <item>21:15h</item>
+        <item>21:30h</item>
+        <item>21:45h</item>
+        <item>22:00h</item>
+        <item>22:15h</item>
+        <item>22:30h</item>
+        <item>22:45h</item>
+        <item>23:00h</item>
+        <item>23:15h</item>
+        <item>23:30h</item>
+    </string-array>
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nombre">Nombre:</string>
+    <string name="contacta_con_nosotros">Contacta con nosotros</string>
+</resources>

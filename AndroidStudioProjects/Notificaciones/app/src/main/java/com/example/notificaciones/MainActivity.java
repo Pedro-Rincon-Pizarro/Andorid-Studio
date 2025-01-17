@@ -38,6 +38,20 @@ public class MainActivity extends AppCompatActivity {
 
         createNotificationChannel();
 
+        NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
+        String[] eventos = new String[5];
+        inboxStyle.setBigContentTitle("Como me expandas reviento");
+        eventos[0] = "Primer aviso";
+        eventos[1] = "Segundo aviso";
+        eventos[2] = "Tercer aviso";
+        eventos[3] = "Ultimo aviso";
+        eventos[4] = "(Allahu Akbar)";
+
+        for(int i = 0; i < eventos.length; i++)
+        {
+            inboxStyle.addLine(eventos[i]);
+        }
+
         Intent intent = new Intent(getApplicationContext(), OtroActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(
                 getApplicationContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
@@ -45,9 +59,11 @@ public class MainActivity extends AppCompatActivity {
                 .setSmallIcon(R.drawable.baseline_access_alarm_24)
                 .setContentTitle("(Allahu Akbar)الله أكبر")
                 .setContentText("El movil explotará en 3, 2, 1...")
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                        .setContentIntent(pendingIntent)
-                                .setAutoCancel(true);
+                .setPriority(NotificationCompat.PRIORITY_MAX)
+                .setContentIntent(pendingIntent)
+                .setStyle(inboxStyle)
+                .setWhen(0)
+                .setAutoCancel(true);
 
 
 
