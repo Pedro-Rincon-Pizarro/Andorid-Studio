@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.pizzeriavenecia.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_nav_gallery"
+            app:destination="@id/nav_gallery" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.example.pizzeriavenecia.ui.carta.CartaFragment"
+        android:label="@string/menu_carta"
+        tools:layout="@layout/fragment_carta" >
+        <action
+            android:id="@+id/action_nav_gallery_to_nav_pizza"
+            app:destination="@id/nav_pizza" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.example.pizzeriavenecia.ui.taglio.TaglioFragment"
+        android:label="@string/menu_taglio"
+        tools:layout="@layout/fragment_taglio" >
+        <action
+            android:id="@+id/action_nav_slideshow_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_contacto"
+        android:name="com.example.pizzeriavenecia.ui.contacto.ContactoFragment"
+        android:label="@string/contacta_con_nosotros"
+        tools:layout="@layout/fragment_contacto" >
+        <action
+            android:id="@+id/action_contactoFragment_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_pizza"
+        android:name="com.example.pizzeriavenecia.ui.carta.PizzaFragment"
+        android:label="Pizza seleccionada"
+        tools:layout="@layout/fragment_pizza" >
+        <action
+            android:id="@+id/action_nav_pizza_to_nav_gallery"
+            app:destination="@id/nav_gallery" />
+    </fragment>
+</navigation>
